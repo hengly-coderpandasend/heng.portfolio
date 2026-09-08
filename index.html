@@ -188,7 +188,7 @@
       text-align: center;
     }
 
-    /* Fixed Profile Avatar Container */
+    /* Profile Avatar Container (Gender tag removed) */
     .avatar-wrapper {
       position: relative;
       width: 120px;
@@ -217,22 +217,6 @@
       background-size: cover;
       background-position: center;
       overflow: hidden;
-    }
-
-    .gender-tag {
-      position: absolute;
-      bottom: 2px;
-      right: 2px;
-      width: 32px;
-      height: 32px;
-      background: var(--primary-color);
-      color: white;
-      border-radius: 50%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 0.8rem;
-      box-shadow: var(--clay-element-shadow);
     }
 
     .profile-info {
@@ -303,64 +287,37 @@
       text-transform: uppercase;
     }
 
-    .action-tabs {
-      display: flex;
-      gap: 10px;
-      margin-bottom: 12px;
-    }
-
-    .tab-btn {
-      flex: 1;
-      padding: 10px;
-      border: none;
+    /* Content Title Badge */
+    .section-title-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
       background: var(--clay-card-bg);
       border-radius: 14px;
-      font-weight: 700;
       font-size: 0.78rem;
-      color: var(--text-dark);
-      cursor: pointer;
-      box-shadow: var(--clay-element-shadow);
-      transition: all 0.2s ease;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .tab-btn.active {
-      box-shadow: var(--clay-pressed-shadow);
+      font-weight: 800;
       color: var(--primary-color);
-    }
-
-    .tab-btn:active {
-      transform: scale(0.98);
+      box-shadow: var(--clay-pressed-shadow);
+      margin-bottom: 12px;
+      width: max-content;
     }
 
     .content-area {
       background: var(--clay-card-bg);
       border-radius: 18px;
-      padding: 14px;
+      padding: 16px;
       box-shadow: var(--clay-pressed-shadow);
-      min-height: 110px;
       font-size: 0.78rem;
       color: var(--text-muted);
       line-height: 1.5;
       margin-bottom: 16px;
     }
 
-    .tab-content {
-      display: none;
-      animation: fadeIn 0.4s ease forwards;
-    }
-
-    .tab-content.active {
-      display: block;
-    }
-
     .contact-details-list {
       display: flex;
       flex-direction: column;
-      gap: 8px;
+      gap: 10px;
     }
 
     .contact-item {
@@ -387,22 +344,6 @@
 
     .contact-item a:hover {
       color: var(--primary-color);
-    }
-
-    .skill-list {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-    }
-
-    .skill-chip {
-      background: var(--clay-card-bg);
-      padding: 5px 10px;
-      border-radius: 10px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      color: var(--text-dark);
-      box-shadow: var(--clay-element-shadow);
     }
 
     .social-links {
@@ -656,9 +597,6 @@
             <div class="avatar-img" id="avatarDisplay">
               <i class="fa-solid fa-user-tie"></i>
             </div>
-            <div class="gender-tag" title="Gender: Male">
-              <i class="fa-solid fa-mars"></i>
-            </div>
           </div>
 
           <div class="profile-info">
@@ -672,7 +610,7 @@
           </div>
         </div>
 
-        <!-- Middle Column: Stats, Interactive Tabs, & Contact Info -->
+        <!-- Middle Column: Stats, Contact Info, & Actions -->
         <div class="middle-column">
           
           <!-- Key Metrics / Stats -->
@@ -691,49 +629,29 @@
             </div>
           </div>
 
-          <!-- Interactive Tabs -->
-          <div class="action-tabs">
-            <button class="tab-btn active" onclick="switchTab('about', this)">
-              <i class="fa-solid fa-address-card"></i> Contact Info
-            </button>
-            <button class="tab-btn" onclick="switchTab('skills', this)">
-              <i class="fa-solid fa-chart-line"></i> Expertise
-            </button>
+          <!-- Section Label -->
+          <div class="section-title-badge">
+            <i class="fa-solid fa-address-card"></i> Direct Contact Details
           </div>
 
-          <!-- Tab Content Container -->
+          <!-- Content Container (Contact Info) -->
           <div class="content-area">
-            <!-- Contact Info Tab -->
-            <div id="about" class="tab-content active">
-              <div class="contact-details-list">
-                <div class="contact-item">
-                  <i class="fa-solid fa-phone"></i>
-                  <a href="tel:+85515777313">(+855) 15 777 313</a>
-                </div>
-                <div class="contact-item">
-                  <i class="fa-solid fa-envelope"></i>
-                  <a href="mailto:heng.ly@foodpanda.com.kh">heng.ly@foodpanda.com.kh</a>
-                </div>
-                <div class="contact-item">
-                  <i class="fa-solid fa-globe"></i>
-                  <a href="https://foodpanda.com" target="_blank">foodpanda.com</a>
-                </div>
-                <div class="contact-item">
-                  <i class="fa-solid fa-building"></i>
-                  <span>#32 F, GIA Tower, Sopheak Mongkul St, Phum 14, Sangkat Tonle Basak, Khan Chamkar Morn, Phnom Penh, Cambodia</span>
-                </div>
+            <div class="contact-details-list">
+              <div class="contact-item">
+                <i class="fa-solid fa-phone"></i>
+                <a href="tel:+85515777313">(+855) 15 777 313</a>
               </div>
-            </div>
-
-            <!-- Skills Tab -->
-            <div id="skills" class="tab-content">
-              <div class="skill-list">
-                <span class="skill-chip">Account Management</span>
-                <span class="skill-chip">Sales Strategy</span>
-                <span class="skill-chip">Client Relations</span>
-                <span class="skill-chip">Negotiation</span>
-                <span class="skill-chip">Market Analysis</span>
-                <span class="skill-chip">B2B Sales</span>
+              <div class="contact-item">
+                <i class="fa-solid fa-envelope"></i>
+                <a href="mailto:heng.ly@foodpanda.com.kh">heng.ly@foodpanda.com.kh</a>
+              </div>
+              <div class="contact-item">
+                <i class="fa-solid fa-globe"></i>
+                <a href="https://foodpanda.com" target="_blank">foodpanda.com</a>
+              </div>
+              <div class="contact-item">
+                <i class="fa-solid fa-building"></i>
+                <span>#32 F, GIA Tower, Sopheak Mongkul St, Phum 14, Sangkat Tonle Basak, Khan Chamkar Morn, Phnom Penh, Cambodia</span>
               </div>
             </div>
           </div>
@@ -816,25 +734,13 @@
     // PROFILE IMAGE CONFIGURATION
     // Replace the URL below with your photo URL or image relative path (e.g. 'profile.jpg')
     // ==========================================================================
-    const PROFILE_IMAGE_URL = 'https://your-image-link-here.jpg';
+    const PROFILE_IMAGE_URL = 'github/Heng LY.PNG';
 
     // Apply Profile Photo if defined
     if (PROFILE_IMAGE_URL && PROFILE_IMAGE_URL !== 'https://your-image-link-here.jpg') {
       const avatar = document.getElementById('avatarDisplay');
       avatar.style.backgroundImage = `url('${PROFILE_IMAGE_URL}')`;
       avatar.innerHTML = ''; // Clear default icon
-    }
-
-    // Tab Switcher Logic
-    function switchTab(tabId, btnElement) {
-      const contents = document.querySelectorAll('.tab-content');
-      contents.forEach(content => content.classList.remove('active'));
-
-      const buttons = document.querySelectorAll('.tab-btn');
-      buttons.forEach(btn => btn.classList.remove('active'));
-
-      document.getElementById(tabId).classList.add('active');
-      btnElement.classList.add('active');
     }
 
     // Dynamic QR Code Generators
