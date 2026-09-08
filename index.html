@@ -62,7 +62,7 @@
       justify-content: center;
       align-items: center;
       overflow-x: hidden;
-      padding: 60px 20px 30px 20px;
+      padding: 80px 20px 30px 20px;
       position: relative;
     }
 
@@ -88,11 +88,39 @@
       width: 100%;
     }
 
+    /* Outer Card Wrapper to anchor Pau-Pau correctly behind the card layer */
+    .card-outer-anchor {
+      flex: 1.5;
+      position: relative;
+      display: flex;
+    }
+
+    /* Pau-Pau Mascot Layered Behind the Main Card (z-index: 1) */
+    .paupau-mascot-wrapper {
+      position: absolute;
+      top: -125px; /* Adjusts how much of Pau-Pau peeks out */
+      right: 45px;
+      width: 140px;
+      height: 160px;
+      z-index: 1; /* Sits BEHIND the card wrapper (z-index: 2) */
+      pointer-events: none;
+      /* Fixed in place: No floating motion */
+    }
+
+    .paupau-mascot-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      mix-blend-mode: screen; /* Blends out dark background cleanly */
+      filter: drop-shadow(0px -5px 10px rgba(168, 8, 74, 0.1));
+    }
+
     /* ==========================================================================
        2. MAIN ID CARD CONTAINER (FIXED PORTFOLIO CARD)
        ========================================================================== */
     .id-card-wrapper {
-      flex: 1.5;
+      width: 100%;
+      z-index: 2; /* Layered in FRONT of Pau-Pau */
       background: var(--clay-card-bg);
       backdrop-filter: blur(12px);
       border-radius: var(--clay-radius);
@@ -103,26 +131,6 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-    }
-
-    /* Pau-Pau Mascot Top Right Position */
-    .paupau-mascot-wrapper {
-      position: absolute;
-      top: -110px;
-      right: 40px;
-      width: 180px;
-      height: 160px;
-      z-index: 12;
-      pointer-events: none;
-      animation: pauPauFloat 5s ease-in-out infinite alternate;
-    }
-
-    .paupau-mascot-img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      mix-blend-mode: screen; /* Smoothly blends out black background */
-      filter: drop-shadow(0px 10px 15px rgba(168, 8, 74, 0.15));
     }
 
     /* ID Lanyard Clip Hole */
@@ -549,10 +557,10 @@
         transform: translateX(-50%);
       }
       .paupau-mascot-wrapper {
-        top: -85px;
-        right: 20px;
-        width: 130px;
-        height: 120px;
+        top: -100px;
+        right: 25px;
+        width: 110px;
+        height: 130px;
       }
     }
 
@@ -577,11 +585,6 @@
       70% { box-shadow: 0 0 0 8px rgba(168, 8, 74, 0); }
       100% { box-shadow: 0 0 0 0 rgba(168, 8, 74, 0); }
     }
-
-    @keyframes pauPauFloat {
-      0% { transform: translateY(0px) rotate(0deg); }
-      100% { transform: translateY(-12px) rotate(3deg); }
-    }
   </style>
 </head>
 <body>
@@ -592,112 +595,117 @@
   <!-- Dual Cards Container -->
   <div class="dual-card-container">
 
-    <!-- CARD 1: FIXED LANDSCAPE PORTFOLIO CARD -->
-    <div class="id-card-wrapper" id="idCard">
+    <!-- Outer Anchor for Positioning Pau-Pau behind Card 1 -->
+    <div class="card-outer-anchor">
       
-      <!-- Pau-Pau Mascot Sitting/Peeking on Top Right -->
+      <!-- Pau-Pau Mascot Layered Behind Card 1 Top Right Edge -->
       <div class="paupau-mascot-wrapper">
-        <img src="github/Pau PauV1.png" alt="Pau Pau Mascot" class="paupau-mascot-img">
+        <img src="Pau PauV1.jpg" alt="Pau Pau Mascot" class="paupau-mascot-img">
       </div>
 
-      <!-- Lanyard Hole Slot -->
-      <div class="card-slot"></div>
+      <!-- CARD 1: FIXED LANDSCAPE PORTFOLIO CARD -->
+      <div class="id-card-wrapper" id="idCard">
 
-      <!-- Header / Identification Brand -->
-      <div class="card-header">
-        <div class="brand-logo">
-          <i class="fa-solid fa-square-p"></i> foodpanda ID
-        </div>
-        <div class="status-badge">
-          <span class="status-dot"></span> Active
-        </div>
-      </div>
+        <!-- Lanyard Hole Slot -->
+        <div class="card-slot"></div>
 
-      <!-- Landscape Inner Grid -->
-      <div class="landscape-grid">
-        
-        <!-- Left Column: Identity & Fixed Profile Photo -->
-        <div class="left-column">
-          <div class="avatar-wrapper">
-            <div class="avatar-img" id="avatarDisplay">
-              <i class="fa-solid fa-user-tie"></i>
-            </div>
+        <!-- Header / Identification Brand -->
+        <div class="card-header">
+          <div class="brand-logo">
+            <i class="fa-solid fa-square-p"></i> foodpanda ID
           </div>
-
-          <div class="profile-info">
-            <h1 class="user-name">LY HENG</h1>
-            <div class="user-position">
-              Specialist, Sale & Account Management
-            </div>
-            <div class="panda-badge">
-              <i class="fa-solid fa-truck-fast"></i> PandaSend Lead
-            </div>
-            <div class="market-tag">
-              <i class="fa-solid fa-location-dot" style="color: var(--primary-color);"></i> Cambodia Market
-            </div>
+          <div class="status-badge">
+            <span class="status-dot"></span> Active
           </div>
         </div>
 
-        <!-- Middle Column: Stats, Contact Info, & Actions -->
-        <div class="middle-column">
+        <!-- Landscape Inner Grid -->
+        <div class="landscape-grid">
           
-          <!-- Key Metrics / Stats -->
-          <div class="stats-grid">
-            <div class="stat-box">
-              <div class="stat-value">PandaSend</div>
-              <div class="stat-label">Focus</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-value">KH</div>
-              <div class="stat-label">Region</div>
-            </div>
-            <div class="stat-box">
-              <div class="stat-value">B2B</div>
-              <div class="stat-label">Market</div>
-            </div>
-          </div>
-
-          <!-- Section Label -->
-          <div class="section-title-badge">
-            <i class="fa-solid fa-address-card"></i> Direct Contact Details
-          </div>
-
-          <!-- Content Container (Contact Info) -->
-          <div class="content-area">
-            <div class="contact-details-list">
-              <div class="contact-item">
-                <i class="fa-solid fa-phone"></i>
-                <a href="tel:+85515777313">(+855) 15 777 313</a>
+          <!-- Left Column: Identity & Fixed Profile Photo -->
+          <div class="left-column">
+            <div class="avatar-wrapper">
+              <div class="avatar-img" id="avatarDisplay">
+                <i class="fa-solid fa-user-tie"></i>
               </div>
-              <div class="contact-item">
+            </div>
+
+            <div class="profile-info">
+              <h1 class="user-name">LY HENG</h1>
+              <div class="user-position">
+                Specialist, Sale & Account Management
+              </div>
+              <div class="panda-badge">
+                <i class="fa-solid fa-truck-fast"></i> PandaSend Lead
+              </div>
+              <div class="market-tag">
+                <i class="fa-solid fa-location-dot" style="color: var(--primary-color);"></i> Cambodia Market
+              </div>
+            </div>
+          </div>
+
+          <!-- Middle Column: Stats, Contact Info, & Actions -->
+          <div class="middle-column">
+            
+            <!-- Key Metrics / Stats -->
+            <div class="stats-grid">
+              <div class="stat-box">
+                <div class="stat-value">PandaSend</div>
+                <div class="stat-label">Focus</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">KH</div>
+                <div class="stat-label">Region</div>
+              </div>
+              <div class="stat-box">
+                <div class="stat-value">B2B</div>
+                <div class="stat-label">Market</div>
+              </div>
+            </div>
+
+            <!-- Section Label -->
+            <div class="section-title-badge">
+              <i class="fa-solid fa-address-card"></i> Direct Contact Details
+            </div>
+
+            <!-- Content Container (Contact Info) -->
+            <div class="content-area">
+              <div class="contact-details-list">
+                <div class="contact-item">
+                  <i class="fa-solid fa-phone"></i>
+                  <a href="tel:+85515777313">(+855) 15 777 313</a>
+                </div>
+                <div class="contact-item">
+                  <i class="fa-solid fa-envelope"></i>
+                  <a href="mailto:heng.ly@foodpanda.com.kh">heng.ly@foodpanda.com.kh</a>
+                </div>
+                <div class="contact-item">
+                  <i class="fa-solid fa-globe"></i>
+                  <a href="https://foodpanda.com" target="_blank">foodpanda.com</a>
+                </div>
+                <div class="contact-item">
+                  <i class="fa-solid fa-building"></i>
+                  <span>#32 F, GIA Tower, Sopheak Mongkul St, Phum 14, Sangkat Tonle Basak, Khan Chamkar Morn, Phnom Penh, Cambodia</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Social & Quick Direct Action Links -->
+            <div class="social-links">
+              <a href="https://t.me/LYHeng_PandaSend" target="_blank" class="social-icon" title="Telegram Contact">
+                <i class="fa-brands fa-telegram"></i>
+              </a>
+              <a href="mailto:heng.ly@foodpanda.com.kh" class="social-icon" title="Send Email">
                 <i class="fa-solid fa-envelope"></i>
-                <a href="mailto:heng.ly@foodpanda.com.kh">heng.ly@foodpanda.com.kh</a>
-              </div>
-              <div class="contact-item">
+              </a>
+              <a href="tel:+85515777313" class="social-icon" title="Call Phone">
+                <i class="fa-solid fa-phone"></i>
+              </a>
+              <a href="https://foodpanda.com" target="_blank" class="social-icon" title="Visit Website">
                 <i class="fa-solid fa-globe"></i>
-                <a href="https://foodpanda.com" target="_blank">foodpanda.com</a>
-              </div>
-              <div class="contact-item">
-                <i class="fa-solid fa-building"></i>
-                <span>#32 F, GIA Tower, Sopheak Mongkul St, Phum 14, Sangkat Tonle Basak, Khan Chamkar Morn, Phnom Penh, Cambodia</span>
-              </div>
+              </a>
             </div>
-          </div>
 
-          <!-- Social & Quick Direct Action Links -->
-          <div class="social-links">
-            <a href="https://t.me/LYHeng_PandaSend" target="_blank" class="social-icon" title="Telegram Contact">
-              <i class="fa-brands fa-telegram"></i>
-            </a>
-            <a href="mailto:heng.ly@foodpanda.com.kh" class="social-icon" title="Send Email">
-              <i class="fa-solid fa-envelope"></i>
-            </a>
-            <a href="tel:+85515777313" class="social-icon" title="Call Phone">
-              <i class="fa-solid fa-phone"></i>
-            </a>
-            <a href="https://foodpanda.com" target="_blank" class="social-icon" title="Visit Website">
-              <i class="fa-solid fa-globe"></i>
-            </a>
           </div>
 
         </div>
