@@ -28,7 +28,7 @@
       
       /* Claymorphism Shadows & Soft Clay Tint */
       --clay-radius: 35px;
-      --clay-card-bg: rgba(245, 228, 235, 0.88);
+      --clay-card-bg: rgba(245, 228, 235, 0.92);
       
       --clay-card-shadow: 
         16px 16px 32px #dbbfc9,
@@ -62,11 +62,11 @@
       justify-content: center;
       align-items: center;
       overflow-x: hidden;
-      padding: 30px 20px;
+      padding: 60px 20px 30px 20px;
       position: relative;
     }
 
-    /* Interactive Living Background Canvas */
+    /* Live Dynamic Canvas Background */
     #liveBgCanvas {
       position: fixed;
       top: 0;
@@ -103,6 +103,26 @@
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+    }
+
+    /* Pau-Pau Mascot Top Right Position */
+    .paupau-mascot-wrapper {
+      position: absolute;
+      top: -110px;
+      right: 40px;
+      width: 180px;
+      height: 160px;
+      z-index: 12;
+      pointer-events: none;
+      animation: pauPauFloat 5s ease-in-out infinite alternate;
+    }
+
+    .paupau-mascot-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      mix-blend-mode: screen; /* Smoothly blends out black background */
+      filter: drop-shadow(0px 10px 15px rgba(168, 8, 74, 0.15));
     }
 
     /* ID Lanyard Clip Hole */
@@ -528,6 +548,12 @@
         left: 50%;
         transform: translateX(-50%);
       }
+      .paupau-mascot-wrapper {
+        top: -85px;
+        right: 20px;
+        width: 130px;
+        height: 120px;
+      }
     }
 
     @media (max-width: 600px) {
@@ -551,6 +577,11 @@
       70% { box-shadow: 0 0 0 8px rgba(168, 8, 74, 0); }
       100% { box-shadow: 0 0 0 0 rgba(168, 8, 74, 0); }
     }
+
+    @keyframes pauPauFloat {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-12px) rotate(3deg); }
+    }
   </style>
 </head>
 <body>
@@ -564,6 +595,11 @@
     <!-- CARD 1: FIXED LANDSCAPE PORTFOLIO CARD -->
     <div class="id-card-wrapper" id="idCard">
       
+      <!-- Pau-Pau Mascot Sitting/Peeking on Top Right -->
+      <div class="paupau-mascot-wrapper">
+        <img src="github/Pau PauV1.png" alt="Pau Pau Mascot" class="paupau-mascot-img">
+      </div>
+
       <!-- Lanyard Hole Slot -->
       <div class="card-slot"></div>
 
