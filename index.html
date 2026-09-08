@@ -16,34 +16,34 @@
 
   <style>
     /* ==========================================================================
-       1. VARIABLES & RESETS (foodpanda Color Palette)
+       1. VARIABLES & RESETS (Darker Pink Palette)
        ========================================================================== */
     :root {
-      --bg-color: #f7e8ee;
-      --primary-color: #d70f64; /* Official foodpanda Pink */
-      --primary-hover: #b80c55;
-      --accent-color: #ff2b85;
+      --bg-color: #f4e3eb;
+      --primary-color: #a8084a; /* Darker Pink / Deep Magenta */
+      --primary-hover: #800033;
+      --accent-color: #c2185b;
       --text-dark: #222222;
-      --text-muted: #636e72;
+      --text-muted: #5e5e5e;
       
       /* Claymorphism Shadows & Soft Clay Tint */
       --clay-radius: 35px;
-      --clay-card-bg: #fcede8;
+      --clay-card-bg: rgba(245, 228, 235, 0.88);
       
       --clay-card-shadow: 
-        16px 16px 32px #e5ced7,
+        16px 16px 32px #dbbfc9,
         -16px -16px 32px #ffffff,
         inset 4px 4px 8px rgba(255, 255, 255, 0.8),
-        inset -4px -4px 8px rgba(215, 15, 100, 0.05);
+        inset -4px -4px 8px rgba(168, 8, 74, 0.08);
       
       --clay-element-shadow: 
-        6px 6px 14px #e5ced7,
+        6px 6px 14px #dbbfc9,
         -6px -6px 14px #ffffff,
         inset 2px 2px 4px rgba(255, 255, 255, 0.9),
-        inset -2px -2px 4px rgba(0, 0, 0, 0.04);
+        inset -2px -2px 4px rgba(0, 0, 0, 0.05);
 
       --clay-pressed-shadow: 
-        inset 5px 5px 10px #e5ced7,
+        inset 5px 5px 10px #dbbfc9,
         inset -5px -5px 10px #ffffff;
     }
 
@@ -63,34 +63,18 @@
       align-items: center;
       overflow-x: hidden;
       padding: 30px 20px;
+      position: relative;
     }
 
-    /* Ambient Background Clay Spheres in foodpanda Pink */
-    .bg-sphere {
-      position: absolute;
-      border-radius: 50%;
+    /* Interactive Living Background Canvas */
+    #liveBgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
       z-index: 0;
-      filter: blur(12px);
-      animation: float 8s ease-in-out infinite alternate;
-    }
-
-    .bg-sphere-1 {
-      width: 320px;
-      height: 320px;
-      background: #ffb3d1;
-      top: 5%;
-      left: 5%;
-      box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.08), inset 10px 10px 20px rgba(255, 255, 255, 0.6);
-    }
-
-    .bg-sphere-2 {
-      width: 260px;
-      height: 260px;
-      background: #fcd0df;
-      bottom: 5%;
-      right: 5%;
-      animation-delay: -4s;
-      box-shadow: inset -10px -10px 20px rgba(0, 0, 0, 0.08), inset 10px 10px 20px rgba(255, 255, 255, 0.6);
+      pointer-events: none;
     }
 
     /* Outer Wrapper Dual Layout Container */
@@ -110,10 +94,11 @@
     .id-card-wrapper {
       flex: 1.5;
       background: var(--clay-card-bg);
+      backdrop-filter: blur(12px);
       border-radius: var(--clay-radius);
       box-shadow: var(--clay-card-shadow);
       padding: 35px 35px;
-      border: 2px solid rgba(255, 255, 255, 0.8);
+      border: 2px solid rgba(255, 255, 255, 0.85);
       position: relative;
       display: flex;
       flex-direction: column;
@@ -124,7 +109,7 @@
     .card-slot {
       width: 12px;
       height: 50px;
-      background: #e1cad4;
+      background: #d4b8c5;
       position: absolute;
       left: -6px;
       top: 50%;
@@ -188,11 +173,11 @@
       text-align: center;
     }
 
-    /* Profile Avatar Container (Gender tag removed) */
+    /* Profile Avatar Container */
     .avatar-wrapper {
       position: relative;
-      width: 120px;
-      height: 120px;
+      width: 125px;
+      height: 125px;
       margin-bottom: 14px;
       border-radius: 50%;
       background: var(--clay-card-bg);
@@ -237,7 +222,21 @@
       font-weight: 700;
       color: var(--primary-color);
       line-height: 1.4;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
+    }
+
+    .panda-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #ffffff;
+      background: var(--primary-color);
+      padding: 6px 12px;
+      border-radius: 15px;
+      box-shadow: var(--clay-element-shadow);
+      margin-bottom: 6px;
     }
 
     .market-tag {
@@ -248,7 +247,7 @@
       font-weight: 700;
       color: var(--text-muted);
       background: var(--clay-card-bg);
-      padding: 6px 12px;
+      padding: 5px 12px;
       border-radius: 15px;
       box-shadow: var(--clay-pressed-shadow);
     }
@@ -287,7 +286,7 @@
       text-transform: uppercase;
     }
 
-    /* Content Title Badge */
+    /* Section Label Badge */
     .section-title-badge {
       display: inline-flex;
       align-items: center;
@@ -382,10 +381,11 @@
     .qr-card-wrapper {
       flex: 0.9;
       background: var(--clay-card-bg);
+      backdrop-filter: blur(12px);
       border-radius: var(--clay-radius);
       box-shadow: var(--clay-card-shadow);
       padding: 30px 25px;
-      border: 2px solid rgba(255, 255, 255, 0.8);
+      border: 2px solid rgba(255, 255, 255, 0.85);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -546,28 +546,17 @@
     /* ==========================================================================
        4. ANIMATIONS
        ========================================================================== */
-    @keyframes float {
-      0% { transform: translateY(0px) rotate(0deg); }
-      100% { transform: translateY(-20px) rotate(10deg); }
-    }
-
     @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(215, 15, 100, 0.4); }
-      70% { box-shadow: 0 0 0 8px rgba(215, 15, 100, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(215, 15, 100, 0); }
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(5px); }
-      to { opacity: 1; transform: translateY(0); }
+      0% { box-shadow: 0 0 0 0 rgba(168, 8, 74, 0.4); }
+      70% { box-shadow: 0 0 0 8px rgba(168, 8, 74, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(168, 8, 74, 0); }
     }
   </style>
 </head>
 <body>
 
-  <!-- Background Decorative Shapes -->
-  <div class="bg-sphere bg-sphere-1"></div>
-  <div class="bg-sphere bg-sphere-2"></div>
+  <!-- Live Dynamic Canvas Background -->
+  <canvas id="liveBgCanvas"></canvas>
 
   <!-- Dual Cards Container -->
   <div class="dual-card-container">
@@ -604,8 +593,11 @@
             <div class="user-position">
               Specialist, Sale & Account Management
             </div>
+            <div class="panda-badge">
+              <i class="fa-solid fa-truck-fast"></i> PandaSend Lead
+            </div>
             <div class="market-tag">
-              <i class="fa-solid fa-location-dot" style="color: #d70f64;"></i> Cambodia Market
+              <i class="fa-solid fa-location-dot" style="color: var(--primary-color);"></i> Cambodia Market
             </div>
           </div>
         </div>
@@ -616,8 +608,8 @@
           <!-- Key Metrics / Stats -->
           <div class="stats-grid">
             <div class="stat-box">
-              <div class="stat-value">100%</div>
-              <div class="stat-label">Commitment</div>
+              <div class="stat-value">PandaSend</div>
+              <div class="stat-label">Focus</div>
             </div>
             <div class="stat-box">
               <div class="stat-value">KH</div>
@@ -625,7 +617,7 @@
             </div>
             <div class="stat-box">
               <div class="stat-value">B2B</div>
-              <div class="stat-label">Focus</div>
+              <div class="stat-label">Market</div>
             </div>
           </div>
 
@@ -685,7 +677,7 @@
         <div class="qr-header-title">
           <i class="fa-solid fa-qrcode" style="color: var(--primary-color);"></i> SCAN CONNECT
         </div>
-        <div class="qr-badge">Quick Actions</div>
+        <div class="qr-badge">PandaSend</div>
       </div>
 
       <div class="qr-list-container">
@@ -697,7 +689,7 @@
             <div class="qr-tile-title">
               <i class="fa-brands fa-telegram" style="color: #0088cc;"></i> Telegram
             </div>
-            <div class="qr-tile-desc">Direct chat & inquiries</div>
+            <div class="qr-tile-desc">Direct chat & PandaSend inquiries</div>
             <a href="https://t.me/LYHeng_PandaSend" target="_blank" class="qr-action-btn">
               Chat Now <i class="fa-solid fa-arrow-right"></i>
             </a>
@@ -709,9 +701,9 @@
           <div class="qr-frame" id="referralQr"></div>
           <div class="qr-info-content">
             <div class="qr-tile-title">
-              <i class="fa-solid fa-file-signature" style="color: var(--primary-color);"></i> Leads Referral
+              <i class="fa-solid fa-file-signature" style="color: var(--primary-color);"></i> PandaSend Referral
             </div>
-            <div class="qr-tile-desc">PandaSend submission</div>
+            <div class="qr-tile-desc">Submit Cambodia lead referral</div>
             <a href="https://forms.gle/uGdBPgNdeZuHURYC6" target="_blank" class="qr-action-btn">
               Submit Form <i class="fa-solid fa-arrow-right"></i>
             </a>
@@ -730,32 +722,26 @@
 
   <!-- Javascript Functionality -->
   <script>
-    // ==========================================================================
     // PROFILE IMAGE CONFIGURATION
-    // Replace the URL below with your photo URL or image relative path (e.g. 'profile.jpg')
-    // ==========================================================================
     const PROFILE_IMAGE_URL = 'github/Heng LY.PNG';
 
-    // Apply Profile Photo if defined
-    if (PROFILE_IMAGE_URL && PROFILE_IMAGE_URL !== 'https://your-image-link-here.jpg') {
+    if (PROFILE_IMAGE_URL) {
       const avatar = document.getElementById('avatarDisplay');
       avatar.style.backgroundImage = `url('${PROFILE_IMAGE_URL}')`;
-      avatar.innerHTML = ''; // Clear default icon
+      avatar.innerHTML = '';
     }
 
     // Dynamic QR Code Generators
     window.addEventListener('DOMContentLoaded', () => {
-      // Generate Telegram Contact QR
       new QRCode(document.getElementById("telegramQr"), {
         text: "https://t.me/LYHeng_PandaSend",
         width: 70,
         height: 70,
-        colorDark : "#d70f64",
+        colorDark : "#a8084a",
         colorLight : "#ffffff",
         correctLevel : QRCode.CorrectLevel.H
       });
 
-      // Generate Referral Form QR
       new QRCode(document.getElementById("referralQr"), {
         text: "https://forms.gle/uGdBPgNdeZuHURYC6",
         width: 70,
@@ -765,6 +751,131 @@
         correctLevel : QRCode.CorrectLevel.H
       });
     });
+
+    // ==========================================================================
+    // LIVE INTERACTIVE CANVAS BACKGROUND ANIMATION
+    // ==========================================================================
+    const canvas = document.getElementById('liveBgCanvas');
+    const ctx = canvas.getContext('2d');
+
+    let width, height;
+    let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+
+    function resizeCanvas() {
+      width = canvas.width = window.innerWidth;
+      height = canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    window.addEventListener('mousemove', (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    // Clay Floating Orbs
+    class ClayOrb {
+      constructor(x, y, radius, color) {
+        this.baseX = x;
+        this.baseY = y;
+        this.x = x;
+        this.y = y;
+        this.radius = radius;
+        this.color = color;
+        this.angle = Math.random() * Math.PI * 2;
+        this.speed = 0.005 + Math.random() * 0.008;
+        this.distance = 20 + Math.random() * 40;
+      }
+
+      update() {
+        this.angle += this.speed;
+        this.x = this.baseX + Math.cos(this.angle) * this.distance + (mouse.x - width / 2) * 0.03;
+        this.y = this.baseY + Math.sin(this.angle) * this.distance + (mouse.y - height / 2) * 0.03;
+      }
+
+      draw() {
+        ctx.beginPath();
+        let grad = ctx.createRadialGradient(
+          this.x - this.radius * 0.3,
+          this.y - this.radius * 0.3,
+          this.radius * 0.1,
+          this.x,
+          this.y,
+          this.radius
+        );
+        grad.addColorStop(0, '#ffffff');
+        grad.addColorStop(0.3, this.color);
+        grad.addColorStop(1, '#630026');
+
+        ctx.fillStyle = grad;
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.shadowColor = 'rgba(168, 8, 74, 0.3)';
+        ctx.shadowBlur = 30;
+        ctx.fill();
+        ctx.shadowBlur = 0;
+      }
+    }
+
+    // Floating Dust Particles
+    class Particle {
+      constructor() {
+        this.reset();
+      }
+
+      reset() {
+        this.x = Math.random() * width;
+        this.y = Math.random() * height;
+        this.size = Math.random() * 3 + 1;
+        this.speedY = -(Math.random() * 0.5 + 0.2);
+        this.speedX = (Math.random() - 0.5) * 0.3;
+        this.opacity = Math.random() * 0.6 + 0.2;
+      }
+
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX;
+        if (this.y < 0 || this.x < 0 || this.x > width) {
+          this.reset();
+          this.y = height;
+        }
+      }
+
+      draw() {
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(168, 8, 74, ${this.opacity})`;
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    const orbs = [
+      new ClayOrb(width * 0.15, height * 0.2, 130, '#d81b60'),
+      new ClayOrb(width * 0.85, height * 0.8, 110, '#c2185b'),
+      new ClayOrb(width * 0.8, height * 0.25, 90, '#e91e63'),
+      new ClayOrb(width * 0.2, height * 0.75, 100, '#a8084a')
+    ];
+
+    const particles = Array.from({ length: 45 }, () => new Particle());
+
+    function animate() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Render Floating Clay Orbs
+      orbs.forEach(orb => {
+        orb.update();
+        orb.draw();
+      });
+
+      // Render Floating Dust Particles
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+
+      requestAnimationFrame(animate);
+    }
+
+    animate();
   </script>
 </body>
 </html>
