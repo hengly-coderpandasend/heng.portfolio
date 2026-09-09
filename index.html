@@ -13,33 +13,33 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
   <style>
     /* ==========================================================================
-       1. VARIABLES & RESETS (Darker Pink Palette)
+       1. VARIABLES & RESETS (Mature Deep Magenta/Pink Palette)
        ========================================================================== */
     :root {
-      --bg-color: #f4e3eb;
-      --primary-color: #a8084a; /* Darker Pink / Deep Magenta */
-      --primary-hover: #800033;
-      --accent-color: #c2185b;
-      --text-dark: #222222;
-      --text-muted: #5e5e5e;
+      --bg-color: #f7e8ef;
+      --primary-color: #d70f64; /* Mature foodpanda Pink/Magenta */
+      --primary-hover: #b0074f;
+      --accent-color: #93003e;  /* Deep Burgundy-Pink Accent */
+      --text-dark: #1f1d20;
+      --text-muted: #665b63;
       
       /* Claymorphism Shadows & Soft Clay Tint */
       --clay-radius: 35px;
-      --clay-card-bg: rgba(245, 228, 235, 0.92);
+      --clay-card-bg: rgba(249, 233, 239, 0.90);
       
       --clay-card-shadow: 
-        16px 16px 32px #dbbfc9,
+        16px 16px 32px #e0cad5,
         -16px -16px 32px #ffffff,
-        inset 4px 4px 8px rgba(255, 255, 255, 0.8),
-        inset -4px -4px 8px rgba(168, 8, 74, 0.08);
+        inset 4px 4px 8px rgba(255, 255, 255, 0.85),
+        inset -4px -4px 8px rgba(215, 15, 100, 0.06);
       
       --clay-element-shadow: 
-        6px 6px 14px #dbbfc9,
+        6px 6px 14px #e0cad5,
         -6px -6px 14px #ffffff,
         inset 2px 2px 4px rgba(255, 255, 255, 0.9),
         inset -2px -2px 4px rgba(0, 0, 0, 0.05);
       --clay-pressed-shadow: 
-        inset 5px 5px 10px #dbbfc9,
+        inset 5px 5px 10px #e0cad5,
         inset -5px -5px 10px #ffffff;
     }
 
@@ -106,7 +106,7 @@
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0px -5px 10px rgba(168, 8, 74, 0.15));
+      filter: drop-shadow(0px -5px 10px rgba(215, 15, 100, 0.15));
     }
 
     /* ==========================================================================
@@ -131,7 +131,7 @@
     .card-slot {
       width: 12px;
       height: 50px;
-      background: #d4b8c5;
+      background: #d8c2ce;
       position: absolute;
       left: -6px;
       top: 50%;
@@ -159,12 +159,12 @@
       gap: 8px;
     }
 
-    /* Added Logo Image Styling */
+    /* Header Logo Image Styling */
     .header-logo-img {
       height: 28px;
       width: auto;
       object-fit: contain;
-      filter: drop-shadow(0px 2px 4px rgba(168, 8, 74, 0.2));
+      filter: drop-shadow(0px 2px 4px rgba(215, 15, 100, 0.15));
     }
 
     .status-badge {
@@ -255,20 +255,6 @@
       margin-bottom: 8px;
     }
 
-    .panda-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.72rem;
-      font-weight: 800;
-      color: #ffffff;
-      background: var(--primary-color);
-      padding: 6px 12px;
-      border-radius: 15px;
-      box-shadow: var(--clay-element-shadow);
-      margin-bottom: 6px;
-    }
-
     .market-tag {
       display: inline-flex;
       align-items: center;
@@ -280,6 +266,20 @@
       padding: 5px 12px;
       border-radius: 15px;
       box-shadow: var(--clay-pressed-shadow);
+      margin-bottom: 6px;
+    }
+
+    .panda-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #ffffff;
+      background: var(--primary-color);
+      padding: 6px 12px;
+      border-radius: 15px;
+      box-shadow: var(--clay-element-shadow);
       margin-bottom: 6px;
     }
 
@@ -584,9 +584,9 @@
        4. ANIMATIONS
        ========================================================================== */
     @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(168, 8, 74, 0.4); }
-      70% { box-shadow: 0 0 0 8px rgba(168, 8, 74, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(168, 8, 74, 0); }
+      0% { box-shadow: 0 0 0 0 rgba(215, 15, 100, 0.4); }
+      70% { box-shadow: 0 0 0 8px rgba(215, 15, 100, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(215, 15, 100, 0); }
     }
   </style>
 </head>
@@ -613,7 +613,7 @@
         <!-- Header / Identification Brand -->
         <div class="card-header">
           <div class="brand-logo">
-            <img src="github/pandago_logo-RGB_white.svg" alt="PandaGo Logo" class="header-logo-img">
+            <img src="github/pandago_logo-RGB_pink.svg" alt="PandaGo Logo" class="header-logo-img">
             <i class="fa-solid fa-square-p"></i> Digital Business Card
           </div>
           <div class="status-badge">
@@ -637,7 +637,7 @@
                 Specialist, Sale & Account Management
               </div>
               <div class="market-tag">
-                <span style="font-size: 0.85rem; line-height: 1;">🇰🇭</span> Cambodia Market
+                <span style="font-weight: 800; color: var(--primary-color);">KH</span> Cambodia Market
               </div>
               <div class="panda-badge">
                 <i class="fa-solid fa-truck-fast"></i> pandasend Coordinator
@@ -781,7 +781,7 @@
         text: "https://t.me/LYHeng_PandaSend",
         width: 70,
         height: 70,
-        colorDark : "#a8084a",
+        colorDark : "#d70f64",
         colorLight : "#ffffff",
         correctLevel : QRCode.CorrectLevel.H
       });
@@ -790,20 +790,20 @@
         text: "https://forms.gle/uGdBPgNdeZuHURYC6",
         width: 70,
         height: 70,
-        colorDark : "#222222",
+        colorDark : "#1f1d20",
         colorLight : "#ffffff",
         correctLevel : QRCode.CorrectLevel.H
       });
     });
 
     // ==========================================================================
-    // LIVE INTERACTIVE CANVAS BACKGROUND ANIMATION
+    // ELEGANT CONSTELLATION NETWORK CANVAS BACKGROUND
     // ==========================================================================
     const canvas = document.getElementById('liveBgCanvas');
     const ctx = canvas.getContext('2d');
 
     let width, height;
-    let mouse = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+    let mouse = { x: null, y: null, maxRadius: 180 };
 
     function resizeCanvas() {
       width = canvas.width = window.innerWidth;
@@ -818,105 +818,82 @@
       mouse.y = e.clientY;
     });
 
-    // Clay Floating Orbs
-    class ClayOrb {
-      constructor(x, y, radius, color) {
-        this.baseX = x;
-        this.baseY = y;
-        this.x = x;
-        this.y = y;
-        this.radius = radius;
-        this.color = color;
-        this.angle = Math.random() * Math.PI * 2;
-        this.speed = 0.005 + Math.random() * 0.008;
-        this.distance = 20 + Math.random() * 40;
-      }
+    window.addEventListener('mouseleave', () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
 
-      update() {
-        this.angle += this.speed;
-        this.x = this.baseX + Math.cos(this.angle) * this.distance + (mouse.x - width / 2) * 0.03;
-        this.y = this.baseY + Math.sin(this.angle) * this.distance + (mouse.y - height / 2) * 0.03;
-      }
-
-      draw() {
-        ctx.beginPath();
-        let grad = ctx.createRadialGradient(
-          this.x - this.radius * 0.3,
-          this.y - this.radius * 0.3,
-          this.radius * 0.1,
-          this.x,
-          this.y,
-          this.radius
-        );
-        grad.addColorStop(0, '#ffffff');
-        grad.addColorStop(0.3, this.color);
-        grad.addColorStop(1, '#630026');
-
-        ctx.fillStyle = grad;
-        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-        ctx.shadowColor = 'rgba(168, 8, 74, 0.3)';
-        ctx.shadowBlur = 30;
-        ctx.fill();
-        ctx.shadowBlur = 0;
-      }
-    }
-
-    // Floating Dust Particles
-    class Particle {
+    class NetworkNode {
       constructor() {
-        this.reset();
-      }
-
-      reset() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.size = Math.random() * 3 + 1;
-        this.speedY = -(Math.random() * 0.5 + 0.2);
-        this.speedX = (Math.random() - 0.5) * 0.3;
-        this.opacity = Math.random() * 0.6 + 0.2;
+        this.radius = Math.random() * 2 + 1.5;
+        this.vx = (Math.random() - 0.5) * 0.6;
+        this.vy = (Math.random() - 0.5) * 0.6;
+        this.baseAlpha = Math.random() * 0.5 + 0.3;
       }
 
       update() {
-        this.y += this.speedY;
-        this.x += this.speedX;
+        this.x += this.vx;
+        this.y += this.vy;
 
-        if (this.y < 0 || this.x < 0 || this.x > width) {
-          this.reset();
-          this.y = height;
-        }
+        if (this.x < 0 || this.x > width) this.vx *= -1;
+        if (this.y < 0 || this.y > height) this.vy *= -1;
       }
 
       draw() {
         ctx.beginPath();
-        ctx.fillStyle = `rgba(168, 8, 74, ${this.opacity})`;
-        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(215, 15, 100, ${this.baseAlpha})`;
         ctx.fill();
       }
     }
 
-    const orbs = [
-      new ClayOrb(width * 0.15, height * 0.2, 130, '#d81b60'),
-      new ClayOrb(width * 0.85, height * 0.8, 110, '#c2185b'),
-      new ClayOrb(width * 0.8, height * 0.25, 90, '#e91e63'),
-      new ClayOrb(width * 0.2, height * 0.75, 100, '#a8084a')
-    ];
-
-    const particles = Array.from({ length: 45 }, () => new Particle());
+    const nodeCount = Math.min(Math.floor((window.innerWidth * window.innerHeight) / 18000), 65);
+    const nodes = Array.from({ length: nodeCount }, () => new NetworkNode());
 
     function animate() {
       ctx.clearRect(0, 0, width, height);
 
-      // Render Floating Clay Orbs
-      orbs.forEach(orb => {
-        orb.update();
-        orb.draw();
-      });
+      // Connect nodes within distance threshold
+      const maxDistance = 140;
+      for (let i = 0; i < nodes.length; i++) {
+        nodes[i].update();
+        nodes[i].draw();
 
-      // Render Floating Dust Particles
-      particles.forEach(p => {
-        p.update();
-        p.draw();
-      });
+        for (let j = i + 1; j < nodes.length; j++) {
+          const dx = nodes[i].x - nodes[j].x;
+          const dy = nodes[i].y - nodes[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < maxDistance) {
+            const alpha = (1 - dist / maxDistance) * 0.25;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.strokeStyle = `rgba(215, 15, 100, ${alpha})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+
+        // Mouse reactive connection
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = nodes[i].x - mouse.x;
+          const dy = nodes[i].y - mouse.y;
+          const mouseDist = Math.sqrt(dx * dx + dy * dy);
+
+          if (mouseDist < mouse.maxRadius) {
+            const alpha = (1 - mouseDist / mouse.maxRadius) * 0.4;
+            ctx.beginPath();
+            ctx.moveTo(nodes[i].x, nodes[i].y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(180, 0, 80, ${alpha})`;
+            ctx.lineWidth = 1.2;
+            ctx.stroke();
+          }
+        }
+      }
 
       requestAnimationFrame(animate);
     }
