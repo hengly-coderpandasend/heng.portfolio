@@ -4,16 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>LY HENG | foodpanda Portfolio ID</title>
-  
   <!-- Google Fonts & FontAwesome Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <!-- QRCode.js Library for dynamic QR generation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
   <style>
     /* ==========================================================================
        1. VARIABLES & RESETS (Darker Pink Palette)
@@ -41,7 +38,6 @@
         -6px -6px 14px #ffffff,
         inset 2px 2px 4px rgba(255, 255, 255, 0.9),
         inset -2px -2px 4px rgba(0, 0, 0, 0.05);
-
       --clay-pressed-shadow: 
         inset 5px 5px 10px #dbbfc9,
         inset -5px -5px 10px #ffffff;
@@ -163,6 +159,14 @@
       gap: 8px;
     }
 
+    /* Added Logo Image Styling */
+    .header-logo-img {
+      height: 28px;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(0px 2px 4px rgba(168, 8, 74, 0.2));
+    }
+
     .status-badge {
       display: flex;
       align-items: center;
@@ -276,6 +280,7 @@
       padding: 5px 12px;
       border-radius: 15px;
       box-shadow: var(--clay-pressed-shadow);
+      margin-bottom: 6px;
     }
 
     .middle-column {
@@ -586,13 +591,12 @@
   </style>
 </head>
 <body>
-
   <!-- Live Dynamic Canvas Background -->
   <canvas id="liveBgCanvas"></canvas>
 
   <!-- Dual Cards Container -->
   <div class="dual-card-container">
-
+    
     <!-- Outer Anchor for Positioning Pau-Pau behind Card 1 -->
     <div class="card-outer-anchor">
       
@@ -603,13 +607,13 @@
 
       <!-- CARD 1: FIXED LANDSCAPE PORTFOLIO CARD -->
       <div class="id-card-wrapper" id="idCard">
-
         <!-- Lanyard Hole Slot -->
         <div class="card-slot"></div>
 
         <!-- Header / Identification Brand -->
         <div class="card-header">
           <div class="brand-logo">
+            <img src="github/pandago_logo-RGB_white.svg" alt="PandaGo Logo" class="header-logo-img">
             <i class="fa-solid fa-square-p"></i> Digital Business Card
           </div>
           <div class="status-badge">
@@ -627,17 +631,16 @@
                 <i class="fa-solid fa-user-tie"></i>
               </div>
             </div>
-
             <div class="profile-info">
               <h1 class="user-name">LY HENG</h1>
               <div class="user-position">
                 Specialist, Sale & Account Management
               </div>
+              <div class="market-tag">
+                <span style="font-size: 0.85rem; line-height: 1;">🇰🇭</span> Cambodia Market
+              </div>
               <div class="panda-badge">
                 <i class="fa-solid fa-truck-fast"></i> pandasend Coordinator
-              </div>
-              <div class="market-tag">
-                <i class="fa-solid fa-location-dot" style="color: var(--primary-color);"></i> Cambodia Market
               </div>
             </div>
           </div>
@@ -766,7 +769,6 @@
   <script>
     // PROFILE IMAGE CONFIGURATION
     const PROFILE_IMAGE_URL = 'github/Heng LY.PNG';
-
     if (PROFILE_IMAGE_URL) {
       const avatar = document.getElementById('avatarDisplay');
       avatar.style.backgroundImage = `url('${PROFILE_IMAGE_URL}')`;
@@ -807,6 +809,7 @@
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     }
+
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
@@ -876,6 +879,7 @@
       update() {
         this.y += this.speedY;
         this.x += this.speedX;
+
         if (this.y < 0 || this.x < 0 || this.x > width) {
           this.reset();
           this.y = height;
