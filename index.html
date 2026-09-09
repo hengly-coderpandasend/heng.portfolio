@@ -38,6 +38,7 @@
         -6px -6px 14px #ffffff,
         inset 2px 2px 4px rgba(255, 255, 255, 0.9),
         inset -2px -2px 4px rgba(0, 0, 0, 0.05);
+
       --clay-pressed-shadow: 
         inset 5px 5px 10px #e0cad5,
         inset -5px -5px 10px #ffffff;
@@ -447,7 +448,6 @@
       color: var(--primary-color);
       border-radius: 12px;
       box-shadow: var(--clay-element-shadow);
-      text-transform: uppercase;
     }
 
     .qr-list-container {
@@ -591,6 +591,7 @@
   </style>
 </head>
 <body>
+
   <!-- Live Dynamic Canvas Background -->
   <canvas id="liveBgCanvas"></canvas>
 
@@ -631,6 +632,7 @@
                 <i class="fa-solid fa-user-tie"></i>
               </div>
             </div>
+
             <div class="profile-info">
               <h1 class="user-name">LY HENG</h1>
               <div class="user-position">
@@ -651,7 +653,7 @@
             <!-- Key Metrics / Stats -->
             <div class="stats-grid">
               <div class="stat-box">
-                <div class="stat-value">PandaSend</div>
+                <div class="stat-value">pandasend</div>
                 <div class="stat-label">Focus</div>
               </div>
               <div class="stat-box">
@@ -682,7 +684,7 @@
                 </div>
                 <div class="contact-item">
                   <i class="fa-solid fa-globe"></i>
-                  <a href="https://foodpanda.com" target="_blank">foodpanda.com</a>
+                  <a href="https://pandasend-kh.com/" target="_blank">pandasend-kh.com</a>
                 </div>
                 <div class="contact-item">
                   <i class="fa-solid fa-building"></i>
@@ -702,17 +704,15 @@
               <a href="tel:+85515777313" class="social-icon" title="Call Phone">
                 <i class="fa-solid fa-phone"></i>
               </a>
-              <a href="https://foodpanda.com" target="_blank" class="social-icon" title="Visit Website">
+              <a href="https://pandasend-kh.com/" target="_blank" class="social-icon" title="Visit Website">
                 <i class="fa-solid fa-globe"></i>
               </a>
             </div>
 
           </div>
-
         </div>
 
       </div>
-
     </div>
 
     <!-- CARD 2: STANDALONE QR CODE HUB CARD -->
@@ -722,7 +722,7 @@
         <div class="qr-header-title">
           <i class="fa-solid fa-qrcode" style="color: var(--primary-color);"></i> SCAN CONNECT
         </div>
-        <div class="qr-badge">PandaSend</div>
+        <div class="qr-badge">pandasend - On Demand Rider</div>
       </div>
 
       <div class="qr-list-container">
@@ -801,7 +801,6 @@
     // ==========================================================================
     const canvas = document.getElementById('liveBgCanvas');
     const ctx = canvas.getContext('2d');
-
     let width, height;
     let mouse = { x: null, y: null, maxRadius: 180 };
 
@@ -809,7 +808,6 @@
       width = canvas.width = window.innerWidth;
       height = canvas.height = window.innerHeight;
     }
-
     window.addEventListener('resize', resizeCanvas);
     resizeCanvas();
 
@@ -870,7 +868,7 @@
             const alpha = (1 - dist / maxDistance) * 0.25;
             ctx.beginPath();
             ctx.moveTo(nodes[i].x, nodes[i].y);
-            ctx.lineTo(nodes[j].x, nodes[j].y);
+            ctx.lineTo(nodes[j].y, nodes[j].y);
             ctx.strokeStyle = `rgba(215, 15, 100, ${alpha})`;
             ctx.lineWidth = 1;
             ctx.stroke();
@@ -894,7 +892,6 @@
           }
         }
       }
-
       requestAnimationFrame(animate);
     }
 
